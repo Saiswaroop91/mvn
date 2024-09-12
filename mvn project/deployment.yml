@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:                               
+  name: app-deploy
+  labels:
+    app: java-app
+spec:
+  replicas: 3              
+  selector:
+    matchLabels:
+       app: java-app            
+  template:
+    metadata:                        
+      name: app-pod
+      labels:
+        app: java-app
+    spec:                             
+      containers:
+      - name: app-container
+        image: satishpenumalli/javawebapp
+        ports:
+          - containerPort: 80
